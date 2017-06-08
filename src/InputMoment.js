@@ -45,15 +45,15 @@ export default class extends React.Component {
           </button>
         </div>
 
-        <div className="tabs">
+        <div className={cx('tab-component', {'is-active': tab === 0})}>
           <DatePicker
-            className={cx('tab', {'is-active': tab === 0})}
             moment={m}
             locale={this.props.locale}
             onChange={this.props.onChange}
           />
+        </div>
+        <div className={cx('tab-component', {'is-active': tab === 1})}>
           <TimePicker
-            className={cx('tab', {'is-active': tab === 1})}
             moment={m}
             showSeconds={this.props.showSeconds}
             locale={this.props.locale}

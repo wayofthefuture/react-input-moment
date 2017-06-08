@@ -65,7 +65,7 @@ export default class extends React.Component {
       weeks = weeks.slice(firstDayOfWeek).concat(weeks.slice(0, firstDayOfWeek));
 
       content = (
-        <div>
+        <div className={cx('im-date-picker', this.props.className)}>
           <DatePickerToolbar
             display={mom.format('MMMM YYYY')}
             onPreviousMonth={this.prevMonth.bind(this)}
@@ -98,11 +98,7 @@ export default class extends React.Component {
       );
     }
 
-    return (
-      <div className={cx('im-date-picker', this.props.className)}>
-        {content}
-      </div>
-    );
+    return content;
   }
 
   onScopeChange(e) {

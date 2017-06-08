@@ -1,15 +1,70 @@
 @import 'variables';
 
 .im-date-picker {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  .toolbar {
+    height: @toolbar-height;
+    line-height: 30px;
+    color: @color-blue;
+    text-align: center;
+
+    button {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      color: #ffffff;
+      border: 1px solid @color-blue;
+      background: @color-blue;
+      font-size: 20px;
+      padding: 0;
+      text-align: center;
+      outline: 0;
+      z-index: 5;
+      cursor: pointer;
+    }
+
+    .nav {
+      cursor: pointer;
+      font-size: 40px;
+      width: 10%;
+
+      &.prev {
+        float: left;
+      }
+
+      &.next {
+        float: right;
+      }
+    }
+
+    .current-date {
+      color: @color-blue;
+      cursor: pointer;
+      font-size: 26px;
+      line-height: 40px;
+    }
+
+    .prev-month,
+    .next-month,
+    .prev-year,
+    .next-year {
+      color: #999999;
+    }
+  }
+
   table {
     width: 100%;
+    height: calc(100% ~"-" @toolbar-height);
     border-collapse: collapse;
     border-spacing: 0;
     table-layout: fixed;
   }
 
   td {
-    padding: 12px 0;
     text-align: center;
     cursor: pointer;
     color: @color-gray;
@@ -31,63 +86,15 @@
     }
   }
 
-  tbody td {
-    color: #666666;
+  tbody {
+    td {
+      color: #666666;
 
-    &:hover {
-      background: @color-blue;
-      border-color: @color-blue;
-      color: @color-white;
-    }
-  }
-
-  .prev-month,
-  .next-month,
-  .prev-year,
-  .next-year {
-    color: #999999;
-  }
-
-  .toolbar {
-    line-height: 30px;
-    color: @color-blue;
-    text-align: center;
-    margin-bottom: 5px;
-
-    button {
-      position: relative;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      color: #ffffff;
-      border: 1px solid @color-blue;
-      background: @color-blue;
-      font-size: 20px;
-      padding: 0;
-      text-align: center;
-      outline: 0;
-      z-index: 5;
-      cursor: pointer;
-    }
-
-    .nav {
-      cursor: pointer;
-      font-size: 40px;
-
-      &.prev {
-        float: left;
+      &:hover {
+        background: @color-blue;
+        border-color: @color-blue;
+        color: @color-white;
       }
-
-      &.next {
-        float: right;
-      }
-    }
-
-    .current-date {
-      color: @color-blue;
-      cursor: pointer;
-      font-size: 26px;
-      line-height: 40px;
     }
   }
 }

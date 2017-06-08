@@ -1,3 +1,5 @@
+@import '../src/less/variables';
+
 body {
   margin: 0;
   font: 87.5%/1.5em 'Lato', sans-serif;
@@ -20,22 +22,40 @@ body {
 
   .options {
     text-align: center;
+  }
+
+  input.header-button {
+    width: 200px;
+    height: 40px;
+    margin: 10px;
+    font-size: 20px;
+    background: none;
+    border: 2px solid @color-blue;
+    color: @color-blue;
+    cursor: pointer;
+  }
+
+  input.output {
+    padding: 7px 8px;
+    font-size: 20px;
+    width: 250px;
     margin-bottom: 1em;
   }
 
-  .demo {
-    height: 550px;
-    width: 300px;
+  .wrapper {
     margin: 0 auto;
-    padding: 15px;
-    box-sizing: border-box;
-    vertical-align: top;
 
-    input.output {
-      padding: 7px 8px;
-      font-size: 14px;
-      width: 90%;
-      margin-bottom: 1em;
+    &.small {
+      height: 340px;
+      width: 320px;   /* small phone typical size */
+    }
+    &.medium {
+      height: 400px;
+      width: 500px;
+    }
+    &.large {
+      height: 600px;
+      width: 700px;
     }
   }
 }

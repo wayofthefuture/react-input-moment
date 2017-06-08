@@ -17,8 +17,13 @@
 }
 
 .im-input-moment {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
   .options {
     width: 100%;
+    height: @options-height;
     display: inline-block;
 
     button {
@@ -47,17 +52,12 @@
     }
   }
 
-  .tab {
+  .tab-component {
     display: none;
-    height: 300px;
+    height: calc(100% ~"-" @options-height);
 
     &.is-active {
       display: block;
     }
   }
-
-  .tabs {
-    margin-bottom: 11px;
-  }
 }
-
