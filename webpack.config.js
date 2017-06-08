@@ -45,6 +45,7 @@ module.exports = {
     host: '0.0.0.0',
     port: 8888,
     disableHostCheck: true,                          //allow external ip addresses to connect
+    open: true,
     inline: true,
     quiet: true,
     noInfo: true,

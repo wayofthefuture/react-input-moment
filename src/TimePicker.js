@@ -17,7 +17,7 @@ export default class extends React.Component {
     let m = this.getMoment();
 
     return (
-      <div className={cx('im-time', this.props.className)}>
+      <div className={cx('im-time-picker', this.props.className)}>
         <div className="showtime">
           <span className="time">{m.format('HH')}</span>
           <span className="separator">:</span>
@@ -33,7 +33,7 @@ export default class extends React.Component {
         <div className="sliders">
           <div className="time-text">Hours:</div>
           <InputSlider
-            className="im-slider-time"
+            className="im-time-slider"
             xmin={0}
             xmax={23}
             x={m.hour()}
@@ -41,7 +41,7 @@ export default class extends React.Component {
           />
           <div className="time-text">Minutes:</div>
           <InputSlider
-            className="im-slider-time"
+            className="im-time-slider"
             xmin={0}
             xmax={59}
             x={m.minute()}
@@ -52,7 +52,7 @@ export default class extends React.Component {
           }
           {this.props.showSeconds &&
             <InputSlider
-              className="im-slider-time"
+              className="im-time-slider"
               xmin={0}
               xmax={59}
               x={m.second()}
