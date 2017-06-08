@@ -2,16 +2,11 @@ var path = require('path');
 
 module.exports = {
   entry: {
-    'bundle': './example/app.js'
+    'example/build/bundle': './example/app.js'
   },
   output: {
-    path: path.join(__dirname, 'example/build'),
+    path: __dirname,
     filename: '[name].js',
-  },
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-    'moment': 'moment'
   },
   module: {
     rules: [
@@ -45,8 +40,8 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, 'example'),    //path on disk to serve static files from
-    publicPath: '/build',                            //path in browser to server bundles from memory
+    contentBase: __dirname,                          //path on disk to serve static files from
+    publicPath: '/',                    //path in browser to server bundles from memory
     host: '0.0.0.0',
     port: 8888,
     disableHostCheck: true,                          //allow external ip addresses to connect
