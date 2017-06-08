@@ -5,7 +5,7 @@
   "main": "dist/input-moment.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build-js": "babel src --out-dir lib",
+    "build-js": "babel src --out-dir lib && webpack -p",
     "build-css": "lessc --clean-css src/less/input-moment.less css/input-moment.css",
     "build": "npm run build-js && npm run build-css",
     "prepublish": "npm run build"
