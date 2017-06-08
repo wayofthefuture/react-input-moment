@@ -4,7 +4,7 @@ This project is created from an older GitHub project by [Prometheus Research](ht
 I wanted to add more functionality, but the other project was not being maintained and not being published to NPM so we created this repo.
 
 ### Demo
-## https://wayofthefuture.github.io/react-input-moment/
+[A demo can be viewed here](https://wayofthefuture.github.io/react-input-moment/)
 
 ### Requirements
 This module has peer dependencies: react, react-dom, and moment.
