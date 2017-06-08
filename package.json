@@ -1,0 +1,55 @@
+{
+  "name": "react-input-moment",
+  "version": "1.0.0",
+  "description": "React datetime picker powered by momentjs",
+  "main": "dist/input-moment.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build-js": "babel src --out-dir lib",
+    "build-css": "lessc --clean-css src/less/input-moment.less css/input-moment.css",
+    "build": "npm run build-js && npm run build-css",
+    "prepublish": "npm run build"
+  },
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6"
+  },
+  "dependencies": {
+    "classnames": "^2.2.0",
+    "react-icons": "^2.2.0",
+    "react-input-slider": "^1.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "json-loader": "^0.5.4",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
+    "less-plugin-clean-css": "^1.5.1",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wayofthefuture/react-input-moment.git"
+  },
+  "keywords": [
+    "react-input-moment",
+    "react input moment",
+    "react date picker",
+    "react time picker",
+    "react calendar",
+    "react moment",
+    "date picker",
+    "time picker"
+  ]
+}
