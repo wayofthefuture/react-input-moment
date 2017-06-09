@@ -1,39 +1,45 @@
 @import 'variables';
 
 .im-time-slider {
-  position: relative;
-  display: inline-block;
-  background-color: @color-gray;
-  border-radius: 3px;
-  height: @slider-size;
   width: 100%;
-  cursor: pointer;
+  color: @color-white;
+  padding: 10px 10px 20px 10px;
+  box-sizing: border-box;
 
-  .value {
-    position: absolute;
-    background-color: @color-blue;
-    border-radius: 3px;
-    top: 0;
-    height: 100%;
+  .showtime {
+    text-align: center;
   }
 
-  .handle {
-    position: absolute;
-    width: @slider-size;
-    height: @slider-size;
+  .separator {
+    display: inline-block;
+    font-size: 32px;
+    font-weight: bold;
+    color: @color-blue;
+    width: 32px;
+    height: 65px;
+    line-height: 65px;
+    text-align: center;
+  }
 
-    &:after {
-      position: relative;
-      display: block;
-      content: '';
-      top: -@slider-fix/2;
-      left: -(@slider-size+@slider-fix)/2;
-      width: @slider-size + @slider-fix;
-      height: @slider-size + @slider-fix;
-      background-color: #fff;
-      border: 3px solid @color-blue;
-      border-radius: 50%;
-      cursor: pointer;
-    }
+  .time-text {
+    position: relative;
+    left: -10px;
+    font-size: 20px;
+    color: @color-blue;
+  }
+
+  .sliders {
+    padding: 0 10px;
+  }
+
+  .time {
+    width: 65px;
+    height: 65px;
+    display: inline-block;
+    font-size: 38px;
+    line-height: 65px;
+    background-color: @color-blue;
+    border-radius: 3px;
+    text-align: center;
   }
 }

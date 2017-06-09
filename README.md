@@ -35,6 +35,15 @@ import {InputMoment, DatePicker, TimePicker} from 'react-input-moment';
 </div>
 
 <div className="wrapper">
+  <BigInputMoment
+    moment={this.state.moment}
+    onChange={this.handleChange}
+    showSeconds={true}
+    locale="en"
+  />
+</div>
+
+<div className="wrapper">
   <DatePicker
     moment={this.state.moment}
     onChange={this.handleChange}

@@ -1,49 +1,56 @@
 @import 'variables';
 
 .im-time-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   color: @color-white;
-  padding: 10% 10px;
+  padding: 10px 10px 20px 10px;
   border: 1px solid @color-gray;
   box-sizing: border-box;
 
-  .showtime {
-    text-align: center;
-  }
+  .time-picker-wrapper {
+    width: 100%;
 
-  .separator {
-    display: inline-block;
-    font-size: 32px;
-    font-weight: bold;
-    color: @color-blue;
-    width: 32px;
-    height: 65px;
-    line-height: 65px;
-    text-align: center;
-  }
+    .showtime {
+      text-align: center;
+    }
 
-  .time-text {
-    position: relative;
-    left: -10px;
-    font-size: 20px;
-    color: @color-blue;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
+    .separator {
+      display: inline-block;
+      font-size: 32px;
+      font-weight: bold;
+      color: @color-blue;
+      width: 32px;
+      height: 65px;
+      line-height: 65px;
+      text-align: center;
+    }
 
-  .sliders {
-    padding: 0 10px;
-  }
+    .time-text {
+      position: relative;
+      left: -10px;
+      font-size: 20px;
+      color: @color-blue;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
 
-  .time {
-    width: 65px;
-    height: 65px;
-    display: inline-block;
-    font-size: 38px;
-    line-height: 65px;
-    background-color: @color-blue;
-    border-radius: 3px;
-    text-align: center;
+    .sliders {
+      padding: 0 10px;
+    }
+
+    .time {
+      width: 65px;
+      height: 65px;
+      display: inline-block;
+      font-size: 38px;
+      line-height: 65px;
+      background-color: @color-blue;
+      border-radius: 3px;
+      text-align: center;
+    }
   }
 }

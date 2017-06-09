@@ -1,10 +1,10 @@
-require('../src/less/input-moment.less');
+require('../src/less/base.less');
 require('./app.less');
 
 import moment from 'moment';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {InputMoment, DatePicker, TimePicker} from '../src/index';
+import {InputMoment, BigInputMoment, DatePicker, TimePicker} from '../src/index';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,22 +12,18 @@ class App extends React.Component {
     this.displayName = 'App';
 
     this.state = {
-      inputmoment_m: moment(),
-      calendar_m: moment(),
-      clock_m: moment(),
+      inputMoment: moment(),
+      bigInputMoment: moment(),
+      datePickerMoment: moment(),
+      timePickerMoment: moment(),
       showSeconds: true,
       locale: 'en',
       size: 'medium'
     };
   }
 
-  getMomentDisplay(demo) {
-    let m = this.state[demo + '_m'];
-    return m ? m.format('llll') : '';
-  }
-
   render() {
-    let {size} = this.state;
+    let {inputMoment, bigInputMoment, datePickerMoment, timePickerMoment, showSeconds, locale, size} = this.state;
     let wrapperClass = 'wrapper ' + size;
 
     return (
@@ -54,7 +50,7 @@ class App extends React.Component {
           <label>
             <input
               type="checkbox"
-              checked={this.state.showSeconds}
+              checked={showSeconds}
               onChange={this.handleShowSeconds.bind(this)}
               />
             Show Seconds
@@ -62,7 +58,7 @@ class App extends React.Component {
           <br/>
           <label>
             Locale:&nbsp;
-            <select value={this.state.locale} onChange={this.handleLocale.bind(this)}>
+            <select value={locale} onChange={this.handleLocale.bind(this)}>
               <option value="en">English</option>
               <option value="fr">French</option>
               <option value="ar">Arabic</option>
@@ -94,15 +90,32 @@ class App extends React.Component {
         <input
           className="output"
           type="text"
-          value={this.getMomentDisplay('inputmoment')}
+          value={inputMoment.format('llll')}
           readOnly
         />
         <div className={wrapperClass}>
           <InputMoment
-            moment={this.state.inputmoment_m}
-            locale={this.state.locale}
-            showSeconds={this.state.showSeconds}
-            onChange={this.handleChange.bind(this, 'inputmoment')}
+            moment={inputMoment}
+            locale={locale}
+            showSeconds={showSeconds}
+            onChange={mom => this.setState({inputMoment: mom})}
+          />
+        </div>
+        <br/>
+
+        <div className="header">BigInputMoment</div>
+        <input
+          className="output"
+          type="text"
+          value={bigInputMoment.format('llll')}
+          readOnly
+        />
+        <div className={wrapperClass}>
+          <BigInputMoment
+            moment={bigInputMoment}
+            locale={locale}
+            showSeconds={showSeconds}
+            onChange={mom => this.setState({bigInputMoment: mom})}
           />
         </div>
         <br/>
@@ -111,15 +124,15 @@ class App extends React.Component {
         <input
           className="output"
           type="text"
-          value={this.getMomentDisplay('calendar')}
+          value={datePickerMoment.format('llll')}
           readOnly
         />
         <div className={wrapperClass}>
           <DatePicker
-            moment={this.state.calendar_m}
-            locale={this.state.locale}
-            showSeconds={this.state.showSeconds}
-            onChange={this.handleChange.bind(this, 'calendar')}
+            moment={datePickerMoment}
+            locale={locale}
+            showSeconds={showSeconds}
+            onChange={mom => this.setState({datePickerMoment: mom})}
           />
         </div>
         <br/>
@@ -128,15 +141,15 @@ class App extends React.Component {
         <input
           className="output"
           type="text"
-          value={this.getMomentDisplay('clock')}
+          value={timePickerMoment.format('llll')}
           readOnly
         />
         <div className={wrapperClass}>
           <TimePicker
-            moment={this.state.clock_m}
-            locale={this.state.locale}
-            showSeconds={this.state.showSeconds}
-            onChange={this.handleChange.bind(this, 'clock')}
+            moment={timePickerMoment}
+            locale={locale}
+            showSeconds={showSeconds}
+            onChange={mom => this.setState({timePickerMoment: mom})}
           />
         </div>
       </div>
@@ -150,14 +163,9 @@ class App extends React.Component {
   handleLocale(e) {
     this.setState({locale: e.target.value});
   }
-
-  handleChange(demo, m) {
-    this.setState({[demo + '_m']: m});
-  }
-
-  handleCancel(demo) {
-    this.setState({[demo + '_m']: null});
-  }
 }
 
 ReactDOM.render(<App/>, document.getElementById('app'));
+
+//testing
+window.moment = moment;
