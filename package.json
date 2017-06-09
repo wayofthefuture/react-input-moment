@@ -8,8 +8,7 @@
     "build-js": "babel src --out-dir lib",
     "build-css": "lessc --clean-css src/less/input-moment.less css/input-moment.css",
     "build": "npm run build-js && npm run build-css",
-    "build gh-pages": "webpack -p",
-    "prepublish": "npm run build"
+    "build gh-pages": "webpack -p"
   },
   "license": "ISC",
   "peerDependencies": {

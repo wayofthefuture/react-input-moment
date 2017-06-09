@@ -6,7 +6,6 @@ import InputSlider from 'react-input-slider';
 export default class extends React.Component {
   constructor(props) {
     super(props);
-    this.displayName = 'Time';
   }
 
   getMoment() {
@@ -14,7 +13,7 @@ export default class extends React.Component {
   }
 
   render() {
-    let m = this.getMoment();
+    let m = this.getMoment().clone();
 
     return (
       <div className={cx('im-time-picker', this.props.className)}>
@@ -65,19 +64,19 @@ export default class extends React.Component {
   }
 
   changeHours(pos) {
-    let m = this.getMoment();
+    let m = this.getMoment().clone();
     m.hours(parseInt(pos.x, 10));
     this.props.onChange(m);
   }
 
   changeMinutes(pos) {
-    let m = this.getMoment();
+    let m = this.getMoment().clone();
     m.minutes(parseInt(pos.x, 10));
     this.props.onChange(m);
   }
 
   changeSeconds(pos) {
-    let m = this.getMoment();
+    let m = this.getMoment().clone();
     m.seconds(parseInt(pos.x, 10));
     this.props.onChange(m);
   }
