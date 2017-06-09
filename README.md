@@ -20,7 +20,7 @@ designed to stretch to their parent container element. The parent wrapper must h
 Go download [input-moment.css](https://github.com/wayofthefuture/react-input-moment/tree/master/css) and drop it as a css link in your html page.
 
 ``` javascript
-import {InputMoment, DatePicker, TimePicker} from 'react-input-moment';
+import {InputMoment, BigInputMoment, DatePicker, TimePicker} from 'react-input-moment';
 
 //all wrapper classes should have a set width and height.
 //percentages will work as long as the parent of the wrapper has a set width and height.
@@ -38,7 +38,6 @@ import {InputMoment, DatePicker, TimePicker} from 'react-input-moment';
   <BigInputMoment
     moment={this.state.moment}
     onChange={this.handleChange}
-    showSeconds={true}
     locale="en"
   />
 </div>
