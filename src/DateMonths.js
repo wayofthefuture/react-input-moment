@@ -2,7 +2,7 @@ import cx from 'classnames';
 import React from 'react';
 import chunk from 'lodash/array/chunk';
 
-export default class DateMonths extends React.Component {
+export default class extends React.Component {
   render() {
     let months = this.props.moment.localeData().months();
 

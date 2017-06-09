@@ -3,7 +3,7 @@ import React from 'react';
 import range from 'lodash/utility/range';
 import chunk from 'lodash/array/chunk';
 
-export default class Calendar extends React.Component {
+export default class extends React.Component {
   constructor(props) {
     super(props);
   }

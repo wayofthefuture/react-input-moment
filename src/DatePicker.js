@@ -10,7 +10,7 @@ import RightIcon from 'react-icons/lib/fa/angle-right';
 import DoubleLeftIcon from 'react-icons/lib/fa/angle-double-left';
 import DoubleRightIcon from 'react-icons/lib/fa/angle-double-right';
 
-export default class DatePicker extends React.Component {
+export default class extends React.Component {
   constructor(props) {
     super(props);
 
