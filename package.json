@@ -1,14 +1,13 @@
 {
   "name": "react-input-moment",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "React date and time pickers powered by MomentJS.",
   "main": "dist/input-moment.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build-js": "babel src --out-dir lib",
+    "build-js": "babel src --out-dir lib && webpack -p",
     "build-css": "lessc --clean-css src/less/base.less css/input-moment.min.css",
     "build": "npm run build-js && npm run build-css",
-    "build gh-pages": "webpack -p",
     "prepublish": "npm run build"
   },
   "license": "ISC",
