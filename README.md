@@ -17,7 +17,7 @@ As with many css components, getting them to look the way you want on all device
 designed to stretch to their parent container element. The parent wrapper must have a set width and height.
 
 ### Usage
-Go download [input-moment.css](https://github.com/wayofthefuture/react-input-moment/tree/master/css) and drop it as a css link in your html page.
+Go download [input-moment.min.css](https://github.com/wayofthefuture/react-input-moment/tree/master/css) and drop it as a css link in your html page.
 
 ``` javascript
 import {InputMoment, BigInputMoment, DatePicker, TimePicker} from 'react-input-moment';
