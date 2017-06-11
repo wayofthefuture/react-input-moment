@@ -12,15 +12,17 @@ These dependencies are not included in the build to reduce duplicate dependencie
 This allows for a flat dependency graph and should significantly reduce build size.
 [Read More Here](https://docs.npmjs.com/how-npm-works/npm3)
 
+### Installation
+- npm install react-input-moment --save
+- Go download [input-moment.min.css](https://github.com/wayofthefuture/react-input-moment/tree/master/css) and drop it as a css style link in your html page.
+
 ### Sizing
 As with many css components, getting them to look the way you want on all devices is not always so easy. These pickers are
 designed to stretch to their parent container element. The parent wrapper must have a set width and height.
 
-### Usage
-Go download [input-moment.min.css](https://github.com/wayofthefuture/react-input-moment/tree/master/css) and drop it as a css link in your html page.
-
 ### Colors
-If you want to override the colors and use your own color scheme, see the scss in [this file](https://github.com/wayofthefuture/react-input-moment/blob/master/example/colors.scss).
+If you want to override the default colors and use your own color scheme, see the scss in [this file](https://github.com/wayofthefuture/react-input-moment/blob/master/example/colors.scss).
+
 
 ``` javascript
 import {InputMoment, BigInputMoment, DatePicker, TimePicker} from 'react-input-moment';
