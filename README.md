@@ -19,6 +19,9 @@ designed to stretch to their parent container element. The parent wrapper must h
 ### Usage
 Go download [input-moment.min.css](https://github.com/wayofthefuture/react-input-moment/tree/master/css) and drop it as a css link in your html page.
 
+### Colors
+If you want to override the colors and use your own color scheme, see the scss in [this file](https://github.com/wayofthefuture/react-input-moment/blob/master/example/colors.scss).
+
 ``` javascript
 import {InputMoment, BigInputMoment, DatePicker, TimePicker} from 'react-input-moment';
 
@@ -58,67 +61,6 @@ import {InputMoment, BigInputMoment, DatePicker, TimePicker} from 'react-input-m
     locale="en"
   />
 </div>
-
-//if you want to change the colors, here is some scss showing how you can override them
-  $accent-back: #e03612;
-  $accent-fore: #ffffff;
-  $menu-fore: #eeeeee;
-
-  .im-input-moment {
-      .options {
-          button {
-              color: $accent-back !important;
-              border-color: $accent-back !important;
-              &.is-active {
-                  background-color: $accent-back !important;
-                  color: $accent-fore !important;
-              }
-          }
-      }
-  }
-  .im-date-picker {
-      .toolbar {
-          color: $accent-fore !important;
-          .current-date {
-              border-bottom-color: $accent-fore !important;
-          }
-      }
-      table td {
-          color: $menu-fore !important;
-          &.current {
-              background-color: $accent-back !important;
-              color: $accent-fore !important;
-          }
-          &:hover {
-              background-color: $accent-back !important;
-              color: $accent-fore !important;
-          }
-      }
-  }
-  .im-time-picker, .im-time-slider {
-      .time-text {
-          color: $menu-fore !important;
-      }
-      .showtime {
-          .time {
-              background-color: $accent-back !important;
-              color: $accent-fore !important;
-          }
-          .separator {
-              color: $accent-back !important;
-          }
-      }
-      .im-slider {
-          background-color: $menu-fore !important;
-          .value {
-              background-color: $accent-back !important;
-          }
-          .handle:after {
-              background-color: $accent-fore !important;
-              border-color: $accent-back !important;
-          }
-      }
-  }
 ```
 
 Check [app.js](https://github.com/wayofthefuture/react-input-moment/blob/master/example/app.js)
