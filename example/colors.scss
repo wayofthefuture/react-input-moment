@@ -1,8 +1,8 @@
 //example: how to override default colors and use your own color scheme
 
+$page-fore: #111111;
 $accent-back: #e03612;
 $accent-fore: #ffffff;
-$menu-fore: #eeeeee;
 
 .im-input-moment {
   .options {
@@ -18,13 +18,13 @@ $menu-fore: #eeeeee;
 }
 .im-date-picker {
   .toolbar {
-    color: $accent-fore !important;
+    color: $accent-back !important;
     .current-date {
-      border-bottom-color: $accent-fore !important;
+      border-bottom-color: $accent-back !important;
     }
   }
   table td {
-    color: $menu-fore !important;
+    color: $page-fore !important;
     &.current {
       background-color: $accent-back !important;
       color: $accent-fore !important;
@@ -37,7 +37,7 @@ $menu-fore: #eeeeee;
 }
 .im-time-picker, .im-time-slider {
   .time-text {
-    color: $menu-fore !important;
+    color: $page-fore !important;
   }
   .showtime {
     .time {
@@ -49,7 +49,7 @@ $menu-fore: #eeeeee;
     }
   }
   .im-slider {
-    background-color: $menu-fore !important;
+    background-color: $page-fore !important;
     .value {
       background-color: $accent-back !important;
     }
