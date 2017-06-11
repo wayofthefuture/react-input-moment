@@ -13,6 +13,7 @@ This allows for a flat dependency graph and should significantly reduce build si
 [Read More Here](https://docs.npmjs.com/how-npm-works/npm3)
 
 ### Installation
+- npm install react react-dom moment --save
 - npm install react-input-moment --save
 - Go download [input-moment.min.css](https://github.com/wayofthefuture/react-input-moment/tree/master/css) and drop it as a css style link in your html page.
 
@@ -22,7 +23,6 @@ designed to stretch to their parent container element. The parent wrapper must h
 
 ### Colors
 If you want to override the default colors and use your own color scheme, see the scss in [this file](https://github.com/wayofthefuture/react-input-moment/blob/master/example/colors.scss).
-
 
 ``` javascript
 import {InputMoment, BigInputMoment, DatePicker, TimePicker} from 'react-input-moment';
@@ -69,6 +69,8 @@ Check [app.js](https://github.com/wayofthefuture/react-input-moment/blob/master/
 for a working example.
 
 ### Development
+- git clone https://github.com/wayofthefuture/react-input-moment.git
+- cd react-input-moment
 - npm install react react-dom moment
 - npm install
 - npm start
