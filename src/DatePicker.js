@@ -105,11 +105,11 @@ class Toolbar extends React.Component {
     return (
       <div className="toolbar">
         <DoubleLeftIcon
-          className="nav prev"
+          className="prev-nav"
           onClick={this.props.onPrevYear}
         />
         <LeftIcon
-          className="nav prev"
+          className="prev-nav"
           onClick={this.props.onPrevMonth}
         />
         <span
@@ -117,13 +117,13 @@ class Toolbar extends React.Component {
           onClick={this.props.onToggleMode}>
           {this.props.display}
         </span>
-        <DoubleRightIcon
-          className="nav next"
-          onClick={this.props.onNextYear}
-        />
         <RightIcon
-          className="nav next"
+          className="next-nav"
           onClick={this.props.onNextMonth}
+        />
+        <DoubleRightIcon
+          className="next-nav"
+          onClick={this.props.onNextYear}
         />
       </div>
     );

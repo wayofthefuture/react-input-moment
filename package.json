@@ -17,7 +17,10 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "lodash": "^3.10.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-icons": "^2.2.0",
     "react-input-slider": "^1.6.0"
   },

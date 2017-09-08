@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import React from 'react';
-import chunk from 'lodash/array/chunk';
+import chunk from 'lodash/chunk';
 
 export default class extends React.Component {
   render() {

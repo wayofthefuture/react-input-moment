@@ -19,9 +19,6 @@ $accent-fore: #ffffff;
 .im-date-picker {
   .toolbar {
     color: $accent-back !important;
-    .current-date {
-      border-bottom-color: $accent-back !important;
-    }
   }
   table td {
     color: $page-fore !important;
