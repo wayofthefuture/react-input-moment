@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
-import range from 'lodash/utility/range';
-import chunk from 'lodash/array/chunk';
+import range from 'lodash/range';
+import chunk from 'lodash/chunk';
 
 export default class extends React.Component {
   constructor(props) {

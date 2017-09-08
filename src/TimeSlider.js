@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import moment from 'moment';
 import React from 'react';
 import InputSlider from 'react-input-slider';
 

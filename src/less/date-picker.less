@@ -10,34 +10,32 @@
     line-height: 30px;
     color: @color-blue;
     text-align: center;
-
-    .nav {
-      cursor: pointer;
-      font-size: 40px;
-      width: 10%;
-
-      &.prev {
-        float: left;
-      }
-
-      &.next {
-        float: right;
-      }
-    }
+    white-space: nowrap;
 
     .current-date {
-      border-bottom: 1px solid @color-blue;
+      display: inline-block;
+      width: 68%;
+      min-width: 200px;
       cursor: pointer;
       font-size: 26px;
       line-height: 40px;
+      vertical-align: middle;
+      text-decoration: underline;
     }
 
-    .prev-month,
-    .next-month,
-    .prev-year,
-    .next-year {
-      color: #999999;
+    //arrows
+    .prev-nav, .next-nav {
+      display: inline-block;
+      width: 8%;
+      cursor: pointer;
+      font-size: 40px;
+      vertical-align: middle;
     }
+  }
+
+  //days on calendar not within current month
+  .prev-month, .next-month, .prev-year, .next-year {
+    color: #CCC;
   }
 
   table {
@@ -73,11 +71,6 @@
   tbody {
     td {
       color: #666666;
-
-      &:hover {
-        background: @color-blue;
-        color: @color-white;
-      }
     }
   }
 }

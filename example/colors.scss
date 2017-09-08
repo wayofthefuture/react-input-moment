@@ -1,0 +1,54 @@
+//example: how to override default colors and use your own color scheme
+
+$page-fore: #111111;
+$accent-back: #e03612;
+$accent-fore: #ffffff;
+
+.im-input-moment {
+  .options {
+    button {
+      color: $accent-back !important;
+      border-color: $accent-back !important;
+      &.is-active {
+        background-color: $accent-back !important;
+        color: $accent-fore !important;
+      }
+    }
+  }
+}
+.im-date-picker {
+  .toolbar {
+    color: $accent-back !important;
+  }
+  table td {
+    color: $page-fore !important;
+    &.current {
+      background-color: $accent-back !important;
+      color: $accent-fore !important;
+    }
+  }
+}
+.im-time-picker, .im-time-slider {
+  .time-text {
+    color: $page-fore !important;
+  }
+  .showtime {
+    .time {
+      background-color: $accent-back !important;
+      color: $accent-fore !important;
+    }
+    .separator {
+      color: $accent-back !important;
+    }
+  }
+  .im-slider {
+    background-color: $page-fore !important;
+    .value {
+      background-color: $accent-back !important;
+    }
+    .handle:after {
+      background-color: $accent-fore !important;
+      border-color: $accent-back !important;
+    }
+  }
+}
