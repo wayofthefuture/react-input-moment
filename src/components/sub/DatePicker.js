@@ -2,8 +2,8 @@ import cx from 'classnames';
 import moment from 'moment';
 import React from 'react';
 
-import DateCalendar from './DateCalendar';
-import DateMonths from './DateMonths';
+import DateCalendar from './sub/DateCalendar';
+import DateMonths from './sub/DateMonths';
 
 import LeftIcon from 'react-icons/lib/fa/angle-left';
 import RightIcon from 'react-icons/lib/fa/angle-right';
@@ -88,6 +88,11 @@ export default class extends React.Component {
     if (prevMonth) mom.subtract(1, 'month');
     if (nextMonth) mom.add(1, 'month');
     this.props.onChange(mom);
+
+    //used to submit picker quickly on day select versus requiring them to click submit in parent
+    if (this.props.onDaySelect) {
+      this.props.onDaySelect();
+    }
   }
 
   onMonthSelect(month) {

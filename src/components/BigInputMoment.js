@@ -1,6 +1,6 @@
 import React from 'react';
-import DatePicker from './DatePicker';
-import TimeSlider from './TimeSlider';
+import DatePicker from './sub/DatePicker';
+import TimeSlider from './sub/TimeSlider';
 
 export default class extends React.Component {
   constructor(props) {

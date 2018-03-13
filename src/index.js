@@ -1,7 +1,7 @@
-import _InputMoment from './InputMoment';
-import _BigInputMoment from './BigInputMoment';
-import _DatePicker from './DatePicker';
-import _TimePicker from './TimePicker';
+import _InputMoment from './components/InputMoment';
+import _BigInputMoment from './components/BigInputMoment';
+import _DatePicker from './components/sub/DatePicker';
+import _TimePicker from './components/sub/TimePicker';
 
 export let InputMoment = _InputMoment;
 export let BigInputMoment = _BigInputMoment;
