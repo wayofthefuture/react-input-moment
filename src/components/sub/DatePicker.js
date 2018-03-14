@@ -87,12 +87,9 @@ export default class extends React.Component {
     mom.date(day);
     if (prevMonth) mom.subtract(1, 'month');
     if (nextMonth) mom.add(1, 'month');
-    this.props.onChange(mom);
 
-    //used to submit picker quickly on day select versus requiring them to click submit in parent
-    if (this.props.onDaySelect) {
-      this.props.onDaySelect();
-    }
+    //true - used to indicate day select if parent doesn't want to have a submit button
+    this.props.onChange(mom, true);
   }
 
   onMonthSelect(month) {
