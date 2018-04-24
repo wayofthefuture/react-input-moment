@@ -19,7 +19,6 @@
     "classnames": "^2.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.21.0",
-    "moment-range": "^4.0.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-icons": "^2.2.0",
