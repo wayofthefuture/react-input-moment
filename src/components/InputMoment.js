@@ -2,8 +2,8 @@ import cx from 'classnames';
 import React from 'react';
 import DatePickerIcon from 'react-icons/lib/fa/calendar';
 import ClockIcon from 'react-icons/lib/fa/clock-o';
-import DatePicker from './DatePicker';
-import TimePicker from './TimePicker';
+import DatePicker from './date/DatePicker';
+import TimePicker from './time/TimePicker';
 
 export default class extends React.Component {
   constructor(props) {

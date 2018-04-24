@@ -1,20 +1,24 @@
 require('../src/less/base.less');
 require('./app.less');
 
-import moment from 'moment';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {InputMoment, BigInputMoment, DatePicker, TimePicker} from '../src/index';
+import {InputMoment, BigInputMoment, DatePicker, DatePickerRange, TimePicker} from '../src/index';
+
+//moment range
+import Moment from 'moment';
+import {extendMoment} from 'moment-range';
+const moment = extendMoment(Moment);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.displayName = 'App';
 
     this.state = {
       inputMoment: moment(),
       bigInputMoment: moment(),
       datePickerMoment: moment(),
+      datePickerRangeRange: moment.range(moment().subtract(3, 'days'), moment()),
       timePickerMoment: moment(),
       showSeconds: true,
       locale: 'en',
@@ -23,7 +27,7 @@ class App extends React.Component {
   }
 
   render() {
-    let {inputMoment, bigInputMoment, datePickerMoment, timePickerMoment, showSeconds, locale, size} = this.state;
+    let {inputMoment, bigInputMoment, datePickerMoment, datePickerRangeRange, timePickerMoment, showSeconds, locale, size} = this.state;
     let wrapperClass = 'wrapper ' + size;
 
     return (
@@ -133,6 +137,22 @@ class App extends React.Component {
             locale={locale}
             showSeconds={showSeconds}
             onChange={mom => this.setState({datePickerMoment: mom})}
+          />
+        </div>
+        <br/>
+
+        <div className="header">DatePickerRange</div>
+        <input
+          className="output"
+          type="text"
+          value={datePickerRangeRange.start.format('llll') + ' - ' + datePickerRangeRange.end.format('llll')}
+          readOnly
+        />
+        <div className={wrapperClass}>
+          <DatePickerRange
+            range={datePickerRangeRange}
+            locale={locale}
+            onChange={range => this.setState({datePickerRangeRange: range})}
           />
         </div>
         <br/>
