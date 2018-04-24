@@ -1,6 +1,6 @@
 {
   "name": "react-input-moment",
-  "version": "1.7.7",
+  "version": "1.7.8",
   "description": "React date and time pickers powered by MomentJS.",
   "main": "dist/input-moment.js",
   "scripts": {
