@@ -1,14 +1,18 @@
 import cx from 'classnames';
-import moment from 'moment';
 import React from 'react';
 
-import DateCalendar from './sub/DateCalendar';
-import DateMonths from './sub/DateMonths';
+import DateCalendarRange from './shared/DateCalendarRange';
+import DateMonths from './shared/DateMonths';
 
 import LeftIcon from 'react-icons/lib/fa/angle-left';
 import RightIcon from 'react-icons/lib/fa/angle-right';
 import DoubleLeftIcon from 'react-icons/lib/fa/angle-double-left';
 import DoubleRightIcon from 'react-icons/lib/fa/angle-double-right';
+
+//moment range
+import Moment from 'moment';
+import {extendMoment} from 'moment-range';
+const moment = extendMoment(Moment);
 
 export default class extends React.Component {
   constructor(props) {
@@ -19,58 +23,56 @@ export default class extends React.Component {
     };
   }
 
-  getMoment() {
-    let mom = this.props.moment ? this.props.moment.clone() : moment();
-
-    if (this.props.locale) {
-      mom = mom.locale(this.props.locale);
-    }
-
-    return mom;
-  }
-
   render() {
     let {mode} = this.state;
-    let mom = this.getMoment();
+    let range = this.props.range.clone();
 
     return (
       <div className={cx('im-date-picker', this.props.className)}>
         <Toolbar
-          display={mom.format('MMMM YYYY')}
+          display={range.start.format('MMMM YYYY')}
           onPrevMonth={this.onPrevMonth.bind(this)}
           onNextMonth={this.onNextMonth.bind(this)}
           onPrevYear={this.onPrevYear.bind(this)}
           onNextYear={this.onNextYear.bind(this)}
           onToggleMode={this.onToggleMode.bind(this)}
         />
-        {mode === 'calendar' && <DateCalendar moment={mom} onDaySelect={this.onDaySelect.bind(this)}/>}
-        {mode === 'months' && <DateMonths moment={mom} onMonthSelect={this.onMonthSelect.bind(this)}/>}
+        {mode === 'calendar' && <DateCalendarRange range={range} onDaySelect={this.onDaySelect.bind(this)}/>}
+        {mode === 'months' && <DateMonths moment={range.start} onMonthSelect={this.onMonthSelect.bind(this)}/>}
       </div>
     );
   }
 
   onPrevMonth(e) {
     e.preventDefault();
-    let m = this.getMoment().clone();
-    this.props.onChange(m.subtract(1, 'month'));
+    let range = this.props.range.clone();
+    range.start.subtract(1, 'month');
+    range.end.subtract(1, 'month');
+    this.props.onChange(range);
   }
 
   onNextMonth(e) {
     e.preventDefault();
-    let m = this.getMoment().clone();
-    this.props.onChange(m.add(1, 'month'));
+    let range = this.props.range.clone();
+    range.start.add(1, 'month');
+    range.end.add(1, 'month');
+    this.props.onChange(range);
   }
 
   onPrevYear(e) {
     e.preventDefault();
-    let m = this.getMoment().clone();
-    this.props.onChange(m.subtract(1, 'year'));
+    let range = this.props.range.clone();
+    range.start.subtract(1, 'year');
+    range.end.subtract(1, 'year');
+    this.props.onChange(range);
   }
 
   onNextYear(e) {
     e.preventDefault();
-    let m = this.getMoment().clone();
-    this.props.onChange(m.add(1, 'year'));
+    let range = this.props.range.clone();
+    range.start.add(1, 'year');
+    range.end.add(1, 'year');
+    this.props.onChange(range);
   }
 
   onToggleMode() {
@@ -80,21 +82,38 @@ export default class extends React.Component {
   }
 
   onDaySelect(day, week) {
-    let mom = this.props.moment.clone();
+    let range = this.props.range.clone();
+    let start = range.start;
+    let end = range.end;
+
     let prevMonth = (week === 0 && day > 7);
     let nextMonth = (week >= 4 && day <= 14);
 
-    mom.date(day);
-    if (prevMonth) mom.subtract(1, 'month');
-    if (nextMonth) mom.add(1, 'month');
+    let compute = start.clone();
+    if (prevMonth) compute.subtract(1, 'month');
+    if (nextMonth) compute.add(1, 'month');
+    compute.date(day);
 
-    //true - used to indicate day select if parent doesn't want to have a submit button
-    this.props.onChange(mom, true);
+    let newRange;
+    //begin new range select
+    if (start.date() !== end.date()) {
+      newRange = moment.range(compute, compute);
+    }
+    //2nd date in range select
+    else {
+      if (compute.valueOf() <= start.valueOf()) {
+        newRange = moment.range(compute, end);
+      } else {
+        newRange = moment.range(start, compute);
+      }
+    }
+
+    this.props.onChange(newRange);
   }
 
   onMonthSelect(month) {
-    let mom = this.props.moment.clone();
-    this.setState({mode: 'calendar'}, () => this.props.onChange(mom.month(month)));
+    let mom = moment().date(1).month(month);
+    this.setState({mode: 'calendar'}, () => this.props.onChange(moment.range(mom.clone(), mom.clone())));
   }
 }
 

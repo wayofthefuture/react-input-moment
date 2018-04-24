@@ -11,6 +11,7 @@
     color: @color-blue;
     text-align: center;
     white-space: nowrap;
+    user-select: none;
 
     .current-date {
       display: inline-block;
@@ -35,7 +36,7 @@
 
   //days on calendar not within current month
   .prev-month, .next-month, .prev-year, .next-year {
-    color: #CCC;
+    color: rgba(50,50,50,0.2);
   }
 
   table {
@@ -54,7 +55,8 @@
     font-size: 20px;
 
     &.current {
-      color: @color-blue;
+      background-color: @color-blue;
+      color: @color-white;
       font-weight: bold;
     }
   }
