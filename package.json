@@ -1,6 +1,6 @@
 {
   "name": "react-input-moment",
-  "version": "1.7.9",
+  "version": "1.7.10",
   "description": "React date and time pickers powered by MomentJS.",
   "main": "dist/input-moment.js",
   "scripts": {
@@ -19,7 +19,6 @@
     "classnames": "^2.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.21.0",
-    "moment-range": "^4.0.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-icons": "^2.2.0",

@@ -55,10 +55,11 @@ import {InputMoment, BigInputMoment, DatePicker, TimePicker} from 'react-input-m
   />
 </div>
 
-//uses npm moment-range
+//onChange(startMoment, endMoment)
 <div className="wrapper">
   <DatePickerRange
-    range={this.state.range}
+    startMoment={this.state.startMoment}
+    endMoment={this.state.endMoment}
     onChange={this.handleChange}
   />
 </div>

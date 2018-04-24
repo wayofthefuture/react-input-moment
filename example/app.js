@@ -3,12 +3,8 @@ require('./app.less');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import moment from 'moment';
 import {InputMoment, BigInputMoment, DatePicker, DatePickerRange, TimePicker} from '../src/index';
-
-//moment range
-import Moment from 'moment';
-import {extendMoment} from 'moment-range';
-const moment = extendMoment(Moment);
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +14,8 @@ class App extends React.Component {
       inputMoment: moment(),
       bigInputMoment: moment(),
       datePickerMoment: moment(),
-      datePickerRangeRange: moment.range(moment().subtract(3, 'days'), moment()),
+      datePickerRangeStartMoment: moment().subtract(3, 'days'),
+      datePickerRangeEndMoment: moment(),
       timePickerMoment: moment(),
       showSeconds: true,
       locale: 'en',
@@ -27,7 +24,7 @@ class App extends React.Component {
   }
 
   render() {
-    let {inputMoment, bigInputMoment, datePickerMoment, datePickerRangeRange, timePickerMoment, showSeconds, locale, size} = this.state;
+    let {inputMoment, bigInputMoment, datePickerMoment, datePickerRangeStartMoment, datePickerRangeEndMoment, timePickerMoment, showSeconds, locale, size} = this.state;
     let wrapperClass = 'wrapper ' + size;
 
     return (
@@ -145,14 +142,15 @@ class App extends React.Component {
         <input
           className="output"
           type="text"
-          value={datePickerRangeRange.start.format('llll') + ' - ' + datePickerRangeRange.end.format('llll')}
+          value={datePickerRangeStartMoment.format('llll') + ' - ' + datePickerRangeEndMoment.format('llll')}
           readOnly
         />
         <div className={wrapperClass}>
           <DatePickerRange
-            range={datePickerRangeRange}
+            startMoment={datePickerRangeStartMoment}
+            endMoment={datePickerRangeEndMoment}
             locale={locale}
-            onChange={range => this.setState({datePickerRangeRange: range})}
+            onChange={(startMoment, endMoment) => this.setState({datePickerRangeStartMoment: startMoment, datePickerRangeEndMoment: endMoment})}
           />
         </div>
         <br/>
