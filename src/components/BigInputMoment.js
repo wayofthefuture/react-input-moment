@@ -16,14 +16,14 @@ export default class extends React.Component {
           <DatePicker
             moment={mom}
             locale={this.props.locale}
-            onChange={this.props.onChange}
+            onChange={this.props.onChange.bind(this)}
           />
         </div>
         <div className="time-wrapper">
           <TimeSlider
             moment={mom}
             locale={this.props.locale}
-            onChange={this.props.onChange}
+            onChange={this.props.onChange.bind(this)}
           />
         </div>
       </div>

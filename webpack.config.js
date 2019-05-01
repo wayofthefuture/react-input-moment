@@ -41,8 +41,8 @@ module.exports = {
   },
   devServer: {
     contentBase: __dirname,                          //path on disk to serve static files from
-    publicPath: '/',                    //path in browser to server bundles from memory
-    host: '0.0.0.0',
+    publicPath: '/',                                 //path in browser to server bundles from memory
+    host: 'localhost',
     port: 8888,
     disableHostCheck: true,                          //allow external ip addresses to connect
     open: true,

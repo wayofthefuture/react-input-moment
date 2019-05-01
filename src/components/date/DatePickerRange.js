@@ -13,70 +13,71 @@ import DoubleRightIcon from 'react-icons/lib/fa/angle-double-right';
 export default class extends React.Component {
   constructor(props) {
     super(props);
+    let {startMoment, endMoment} = this.props;
+    let displayMoment = startMoment.clone();
 
     this.state = {
       mode: 'calendar',
+      displayMoment: displayMoment,
+      startMoment: startMoment,
+      endMoment: endMoment
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.state.startMoment !== nextProps.startMoment) {
+      this.setState({startMoment: nextProps.startMoment});
+    }
+    if (this.state.endMoment !== nextProps.endMoment) {
+      this.setState({endMoment: nextProps.endMoment});
+    }
+  }
+
   render() {
-    let {mode} = this.state;
-    let {startMoment, endMoment} = this.props;
+    let {mode, displayMoment, startMoment, endMoment} = this.state;
 
     return (
       <div className={cx('im-date-picker', this.props.className)}>
         <Toolbar
-          display={startMoment.format('MMMM YYYY')}
+          display={displayMoment.format('MMMM YYYY')}
           onPrevMonth={this.onPrevMonth.bind(this)}
           onNextMonth={this.onNextMonth.bind(this)}
           onPrevYear={this.onPrevYear.bind(this)}
           onNextYear={this.onNextYear.bind(this)}
           onToggleMode={this.onToggleMode.bind(this)}
         />
-        {mode === 'calendar' && <DateCalendarRange startMoment={startMoment} endMoment={endMoment} onDaySelect={this.onDaySelect.bind(this)}/>}
-        {mode === 'months' && <DateMonths moment={startMoment} onMonthSelect={this.onMonthSelect.bind(this)}/>}
+        {mode === 'calendar' && <DateCalendarRange displayMoment={displayMoment} startMoment={startMoment} endMoment={endMoment} onDaySelect={this.onDaySelect.bind(this)}/>}
+        {mode === 'months' && <DateMonths moment={displayMoment} onMonthSelect={this.onMonthSelect.bind(this)}/>}
       </div>
     );
   }
 
   onPrevMonth(e) {
     e.preventDefault();
-    let startMoment = this.props.startMoment.clone();
-    let endMoment = this.props.endMoment.clone();
-
-    startMoment.subtract(1, 'month');
-    endMoment.subtract(1, 'month');
-    this.fireChangeEvent(startMoment, endMoment);
+    let displayMoment = this.state.displayMoment.clone();
+    displayMoment.subtract(1, 'month');
+    this.setState({displayMoment});
   }
 
   onNextMonth(e) {
     e.preventDefault();
-    let startMoment = this.props.startMoment.clone();
-    let endMoment = this.props.endMoment.clone();
-
-    startMoment.add(1, 'month');
-    endMoment.add(1, 'month');
-    this.fireChangeEvent(startMoment, endMoment);
+    let displayMoment = this.state.displayMoment.clone();
+    displayMoment.add(1, 'month');
+    this.setState({displayMoment});
   }
 
   onPrevYear(e) {
     e.preventDefault();
-    let startMoment = this.props.startMoment.clone();
-    let endMoment = this.props.endMoment.clone();
-
-    startMoment.subtract(1, 'year');
-    endMoment.subtract(1, 'year');
-    this.fireChangeEvent(startMoment, endMoment);
+    let displayMoment = this.state.displayMoment.clone();
+    displayMoment.subtract(1, 'year');
+    this.setState({displayMoment});
   }
 
   onNextYear(e) {
     e.preventDefault();
-    let startMoment = this.props.startMoment.clone();
-    let endMoment = this.props.endMoment.clone();
-
-    startMoment.add(1, 'year');
-    endMoment.add(1, 'year');
-    this.fireChangeEvent(startMoment, endMoment);
+    let displayMoment = this.state.displayMoment.clone();
+    displayMoment.add(1, 'year');
+    this.setState({displayMoment});
   }
 
   onToggleMode() {
@@ -86,13 +87,14 @@ export default class extends React.Component {
   }
 
   onDaySelect(day, week) {
-    let startMoment = this.props.startMoment.clone();
-    let endMoment = this.props.endMoment.clone();
+    let displayMoment = this.state.displayMoment.clone();
+    let startMoment = this.state.startMoment.clone();
+    let endMoment = this.state.endMoment.clone();
 
     let prevMonth = (week === 0 && day > 7);
     let nextMonth = (week >= 4 && day <= 14);
 
-    let compMoment = startMoment.clone();
+    let compMoment = displayMoment.clone();
     if (prevMonth) compMoment.subtract(1, 'month');
     if (nextMonth) compMoment.add(1, 'month');
     compMoment.date(day);
@@ -112,11 +114,10 @@ export default class extends React.Component {
   }
 
   onMonthSelect(month) {
-    let mom = moment().date(1).month(month);
+    let displayMoment = this.state.displayMoment.clone();
+    let newMoment = displayMoment.clone().date(1).month(month);
 
-    this.setState({mode: 'calendar'}, () => {
-      this.fireChangeEvent(mom, mom);
-    });
+    this.setState({mode: 'calendar', displayMoment: newMoment});
   }
 
   //make sure change event sends range moment boundaries

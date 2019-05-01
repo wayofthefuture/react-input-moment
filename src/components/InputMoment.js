@@ -47,7 +47,7 @@ export default class extends React.Component {
           <DatePicker
             moment={mom}
             locale={this.props.locale}
-            onChange={this.props.onChange}
+            onChange={this.props.onChange.bind(this)}
           />
         </div>
         <div className={cx('tab-component', {'is-active': tab === 1})}>
@@ -55,7 +55,7 @@ export default class extends React.Component {
             moment={mom}
             showSeconds={this.props.showSeconds}
             locale={this.props.locale}
-            onChange={this.props.onChange}
+            onChange={this.props.onChange.bind(this)}
           />
         </div>
       </div>
