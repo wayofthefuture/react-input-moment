@@ -140,6 +140,7 @@ class App extends React.Component {
 
         <div className="header">DatePickerRange</div>
         <input
+          style={{width: '525px'}}
           className="output"
           type="text"
           value={datePickerRangeStartMoment.format('llll') + ' - ' + datePickerRangeEndMoment.format('llll')}

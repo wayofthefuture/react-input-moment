@@ -61,18 +61,24 @@ export default class extends React.Component {
   }
 
   changeHours(pos) {
+    if (window.event && window.event.stopPropagation) window.event.stopPropagation();  //bug fix for picker within react modal component
+
     let mom = this.props.moment.clone();
     mom.hours(parseInt(pos.x, 10));
     this.props.onChange(mom);
   }
 
   changeMinutes(pos) {
+    if (window.event && window.event.stopPropagation) window.event.stopPropagation();  //bug fix for picker within react modal component
+
     let mom = this.props.moment.clone();
     mom.minutes(parseInt(pos.x, 10));
     this.props.onChange(mom);
   }
 
   changeSeconds(pos) {
+    if (window.event && window.event.stopPropagation) window.event.stopPropagation();  //bug fix for picker within react modal component
+
     let mom = this.props.moment.clone();
     mom.seconds(parseInt(pos.x, 10));
     this.props.onChange(mom);

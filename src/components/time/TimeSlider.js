@@ -9,6 +9,7 @@ export default class extends React.Component {
 
   render() {
     let mom = this.props.moment;
+    let minutes = this.getMinutes(mom);
 
     return (
       <div className={cx('im-time-slider', this.props.className)}>
@@ -29,7 +30,8 @@ export default class extends React.Component {
             className="im-slider"
             xmin={0}
             xmax={1439}
-            x={this.getMinutes(mom)}
+            xstep={5}
+            x={minutes}
             onChange={this.onChange.bind(this)}
           />
         </div>
@@ -38,6 +40,8 @@ export default class extends React.Component {
   }
 
   onChange(pos) {
+    if (window.event && window.event.stopPropagation) window.event.stopPropagation();  //bug fix for picker within react modal component
+
     let mom = this.props.moment.clone();
     let totalMin = parseInt(pos.x, 10);
 

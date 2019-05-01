@@ -9,13 +9,14 @@ export default class extends React.Component {
   }
 
   render() {
+    let displayMoment = this.props.displayMoment.clone();
     let startMoment = this.props.startMoment.clone();
     let endMoment = this.props.endMoment.clone();
 
-    let firstDayOfWeek = startMoment.localeData().firstDayOfWeek();
-    let endOfPreviousMonth = startMoment.clone().subtract(1, 'month').endOf('month').date();
-    let startDayOfCurrentMonth = startMoment.clone().date(1).day();
-    let endOfCurrentMonth = startMoment.clone().endOf('month').date();
+    let firstDayOfWeek = displayMoment.localeData().firstDayOfWeek();
+    let endOfPreviousMonth = displayMoment.clone().subtract(1, 'month').endOf('month').date();
+    let startDayOfCurrentMonth = displayMoment.clone().date(1).day();
+    let endOfCurrentMonth = displayMoment.clone().endOf('month').date();
 
     let days = [].concat(
       range(
@@ -32,7 +33,7 @@ export default class extends React.Component {
       )
     );
 
-    let weeks = startMoment.localeData().weekdaysShort();
+    let weeks = displayMoment.localeData().weekdaysShort();
     weeks = weeks.slice(firstDayOfWeek).concat(weeks.slice(0, firstDayOfWeek));
 
     return (
@@ -47,7 +48,7 @@ export default class extends React.Component {
         {chunk(days, 7).map((row, week) => (
           <tr key={week}>
             {row.map(day => (
-              <Day key={day} day={day} week={week} startMoment={startMoment} endMoment={endMoment} onClick={() => this.props.onDaySelect(day, week)}/>
+              <Day key={day} day={day} week={week} displayMoment={displayMoment} startMoment={startMoment} endMoment={endMoment} onClick={() => this.props.onDaySelect(day, week)}/>
             ))}
           </tr>
         ))}
@@ -64,13 +65,14 @@ class Day extends React.Component {
 
   render() {
     let {day, week} = this.props;
+    let displayMoment = this.props.displayMoment.clone();
     let startMoment = this.props.startMoment.clone();
     let endMoment = this.props.endMoment.clone();
 
     let prevMonth = (week === 0 && day > 7);
     let nextMonth = (week >= 4 && day <= 14);
 
-    let compMoment = startMoment.clone();
+    let compMoment = displayMoment.clone();
     if (prevMonth) compMoment.subtract(1, 'month');
     if (nextMonth) compMoment.add(1, 'month');
     compMoment.date(day);
@@ -81,6 +83,6 @@ class Day extends React.Component {
       'current': (startMoment.valueOf() <= compMoment.valueOf() && compMoment.valueOf() <= endMoment.valueOf())
     });
 
-    return <td className={cn} onClick={this.props.onClick}>{day}</td>;
+    return <td className={cn} onClick={this.props.onClick.bind(this)}>{day}</td>;
   }
 }
