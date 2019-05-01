@@ -7,13 +7,14 @@
     "start": "webpack-dev-server",
     "build-js": "babel src --out-dir lib && webpack -p",
     "build-css": "lessc --clean-css src/less/base.less css/input-moment.min.css",
-    "build": "npm run build-js && npm run build-css"
+    "build": "npm run build-js && npm run build-css",
+    "install-peer-deps": "npm install react react-dom moment --no-save"
   },
   "license": "ISC",
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0",
-    "moment": "^2.10.6"
+    "react": ">=15.0.0",
+    "react-dom": ">=15.0.0",
+    "moment": ">=2.10.6"
   },
   "dependencies": {
     "classnames": "^2.2.0",
