@@ -22,6 +22,7 @@ export default class extends React.Component {
         <div className="time-wrapper">
           <TimeSlider
             moment={mom}
+            xstep={this.props.xstep}
             locale={this.props.locale}
             onChange={this.props.onChange.bind(this)}
           />
