@@ -9,6 +9,7 @@ export default class extends React.Component {
 
   render() {
     let mom = this.props.moment;
+    let xstep = this.props.xstep ? this.props.xstep : 5;
     let minutes = this.getMinutes(mom);
 
     return (
@@ -30,7 +31,7 @@ export default class extends React.Component {
             className="im-slider"
             xmin={0}
             xmax={1439}
-            xstep={5}
+            xstep={xstep}
             x={minutes}
             onChange={this.onChange.bind(this)}
           />
